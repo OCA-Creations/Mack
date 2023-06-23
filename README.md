@@ -11,7 +11,7 @@
 SwiftUI has more functionality and ease-of-use features on iOS than macOS. `SwiftUI + Mack`, on the other hand, makes development more convenient, has built-in workarounds for common issues, and makes interface development quicker and more intuitive. Instead of creating new APIs or capabilities themselves, Mack makes it easier to interact with the tools you aready have. Whether it's making it easier to detect right clicks on a view or simple `String` convenience methods, Mack streamlines Swift and SwiftUI every step of the way.
 
 # ⚠️⚠️ Mack is in **Active Development** ⚠️⚠️
-Mack is currently being developed at OCA Creations LLC and the open source community, and is not yet ready for use of any kind. For now, check out the Feature Roadmap:
+Mack is currently being developed at OCA Creations LLC and the open source community, and is not yet ready for use of any kind. Contributors are welcome - see [Contributing](#contributing) for more information. For now, check out the Feature Roadmap:
 
 <a href="https://github.com/OCA-Creations/Mack/blob/main/Planning/PlannedFeatures.md"> <img src="https://img.shields.io/badge/Features-000?style=for-the-badge" height=50 /> </a>
 
@@ -28,23 +28,25 @@ Mack is currently being developed at OCA Creations LLC and the open source commu
 - [License](#license)
 
 ## What
+Mack is not a new way to write code. In fact, it aims to be the exact opposite - the functionality that Mack provides should directly augment the code that you write, and seem as natural as any functionality from SwiftUI. The main idea behind the library is to impliment lower-level solutions that are commonly used or workarounds that are currently necessary. For example, SwiftUI does not currently have a way to detect a right click on a `View`. Following Apple paradigms as closely as possible, the `.onRightClick` modifier provides the same structure as a native modifier, `.onTapGesture`, but adds a feature. 
+### The Ultimate Goal
+"Import and forget": *Developers shouldn't even realize they are using features provided by Mack*. Functionality should feel so *right*, so *native*, that they can type code that Mack provides like it is part of the standard libraries. This is a long way off, but in the end, a developer should be able to use Mack easily and naturally.
 
 ## Features
 
-- **Easy to use**: Mack's clean syntax and comprehensive documentation make it a breeze to pick up and integrate into your project.
-- **Stylish by default**: With a handpicked selection of beautiful, customizable default styles, your app will look professional without spending hours on design.
-- **Focused on performance**: Optimized for high performance and built on top of Apple's SwiftUI framework, Mack allows for seamless and fluid user interfaces.
-- **Cross-platform**: Supports iOS, macOS, tvOS, and watchOS right out of the box. Write your app once and target multiple platforms effortlessly.
-- **Composability**: Mack components play well with each other, making it easy to create modular building blocks for your app.
-- **Customizability**: Modify Mack components to meet your design requirements, or create your own components with Mack's powerful styling and layout system.
-- **Localization**: Built-in support for multiple languages enables truly global apps.
-- **Accessibility**: Designed with accessibility in mind, Mack ensures your app can be used by everyone, including people with disabilities.
+- **Easy to use**: Mack's natural syntax and comprehensive documentation make it a breeze to pick up and integrate into your project.
+- **Ultramodern**: Adding Mack to your project doesn't change any functionality. Mack only provides features that simplify development, but never replaces existing functionality.
+- **Commonly Used Types**: Created with fluidity in mind, Mack solves commonly encountered problems without you having to impliment a workaround. Everything included could (hopefully) be a part of the standard library, and Mack's types are ↩️
+- **Natively Written**: Mack follows Apple stylization guidelines, naming conventions, and documentation methods as closely as possible. Every Mack type should feel like something from out-of-the-box SwiftUI.
+- **Ultramodern**: Mack uses the latest interface technology and Swift versions (though it supports older versions as well), and intregrates directly with your current code. Import Mack and that's it - use all functionality as though it was there already.
+- **Customizability**: Modify Mack components to meet your own requirements, or propose new functionality to the library to solve your solutions. All of Mack aims to be as customizeable as possible.
 
 ## Requirements
 
-- iOS 13.0+ / macOS 10.15+ / tvOS 13.0+ / watchOS 6.0+
-- Swift 5.0+
-- Xcode 12.0+
+- macOS 13.0+
+- iOS Support not yet available, still a WIP
+- Swift 5.5+ (not tested below 5.8)
+- Xcode 14.0+
 
 ## Installation
 
@@ -76,7 +78,7 @@ To integrate Mack into your Xcode project using the Swift Package Manager, add t
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/your_username_here/Mack.git", .upToNextMajor(from: "1.0.0"))
+  .package(url: "https://github.com/OCA-Creations/Mack.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
@@ -88,37 +90,42 @@ To get started with Mack, simply import it into your project:
 import Mack
 ```
 
-Then, you can use Mack components to build your user interface. For example, here's how you can create a simple login screen:
+As aformentioned, Mack's goal is to "import and forget". Functionality intregrates seemlessely with standard code (please note that not all functionality below is implimented completely):
 
 ```swift
 import Mack
 
 struct LoginView: View {
-  @State private var email = ""
-  @State private var password = ""
+  @SecurePersisted("email") private var email = ""
+  //Ensure this value is saved in secure storage, so it will not be blank next time
+  @SecurePersisted("password") private var password = ""
 
   var body: some View {
     VStack {
       Header("Welcome Back")
 
       TextField("Email", text: $email)
-        .style(.textLight)
+        .placeholderColor(.blue)
 
-      TextField("Password", text: $password)
+      SecureField("Password", text: $password)
         .style(.passwordLight)
 
       Spacer()
 
-      Button(action: loginUser) {
-        Text("Login")
+      Image("ClickMe")
+      .onRightClick {
+        print("You have right-clicked this item.")
       }
-      .style(.primary)
+      Text("This text will not allow screenshots.")
+      .allowsScreenshots(false)
     }
     .padding()
   }
 
-  func loginUser() {
-    // Handle login logic
+  func loginUser() -> Bool {
+    // A simple password comparison
+    let correctPassword = SecureStorage.getByID("correct_password")
+    let storedEmail = Secure
   }
 }
 ```
@@ -139,7 +146,7 @@ We welcome and appreciate all contributions to Mack. To contribute, please follo
 4. Push to the branch: `git push origin my-new-feature`
 5. Open a Pull Request on GitHub
 
-If you have any questions or suggestions, feel free to [open an issue](https://github.com/your_username_here/Mack/issues/new).
+If you have any questions or suggestions, feel free to [open an issue](https://github.com/OCA-Creations/Mack/issues/new).
 
 ## License
 
