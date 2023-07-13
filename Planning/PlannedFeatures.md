@@ -19,4 +19,12 @@ This document outlines all features, in any state of completion, for the `Mack` 
     - Description: The `.onRightClick` modifier provides the ability to perform actions when a `View` is right-clicked by the user on macOS.
     - Platform Availability: macOS 13.0 or later
     - Further Notes Page: [`/SwiftUI/Feature_Notes/onRightClick.md`](https://github.com/OCA-Creations/Mack/Planning/SwiftUI/Feature_Notes/onRightClick.md)
+- `.if` Modifier
+    - Status: 🕰️
+    - Description: In SwiftUI, there is often a need to apply a modifier conditionally. This satisfies that issue.
+    - Platform Availability: iOS 13+, macOS 10.15+, iPadOS 13+
+    - Further Notes Page: [`/SwiftUI/Feature_Notes/if.md`](https://github.com/OCA-Creations/Mack/Planning/SwiftUI/Feature_Notes/if.md)
+### Dragging API
+#### Mack makes it easier to add draggable functionality to `View`s, especially `Button`s.
+
 ## Swift (or sublibraries) Features
