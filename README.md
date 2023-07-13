@@ -11,9 +11,10 @@
 SwiftUI has more functionality and ease-of-use features on iOS than macOS. `SwiftUI + Mack`, on the other hand, makes development more convenient, has built-in workarounds for common issues, and makes interface development quicker and more intuitive. Instead of creating new APIs or capabilities themselves, Mack makes it easier to interact with the tools you aready have. Whether it's making it easier to detect right clicks on a view or simple `String` convenience methods, Mack streamlines Swift and SwiftUI every step of the way.
 
 # ⚠️⚠️ Mack is in **Active Development** ⚠️⚠️
-Mack is currently being developed at OCA Creations LLC and the open source community, and is not yet ready for use of any kind. Contributors are welcome - see [Contributing](#contributing) for more information. For now, check out the Feature Roadmap:
+Mack is currently being developed by OCA Creations LLC and the open source community, and is **not yet ready for use of any kind**. Contributors are welcome - see [Contributing](#contributing) for more information. For now, check out the Feature Roadmap, or contribute:
 
-<a href="https://github.com/OCA-Creations/Mack/blob/main/Planning/PlannedFeatures.md"> <img src="https://img.shields.io/badge/Features-000?style=for-the-badge" height=50 /> </a>
+<a href="https://github.com/OCA-Creations/Mack/blob/main/Planning/PlannedFeatures.md"> <img src="https://img.shields.io/badge/Features-rrr?style=for-the-badge" height=50 /> </a>
+<a href="https://github.com/OCA-Creations/Mack/README.md#contributing"> <img src="https://img.shields.io/badge/Contribute-000?style=for-the-badge" height=50 /> </a>
 
 
 ## Table of contents:
@@ -44,7 +45,7 @@ Mack is not a new way to write code. In fact, it aims to be the exact opposite -
 ## Requirements
 
 - macOS 13.0+
-- iOS Support not yet available, still a WIP
+- iOS/iPadOS Support not yet available, still a WIP with many features not at all available
 - Swift 5.5+ (not tested below 5.8)
 - Xcode 14.0+
 
@@ -52,7 +53,7 @@ Mack is not a new way to write code. In fact, it aims to be the exact opposite -
 
 Mack is available through CocoaPods, Carthage, and the Swift Package Manager (SPM). Choose your preferred dependency manager, and follow the instructions below:
 
-### CocoaPods
+### CocoaPods - NOT YET AVAILABLE!
 
 To integrate Mack into your Xcode project using CocoaPods, add the following line to your `Podfile`:
 
@@ -62,7 +63,7 @@ pod 'Mack'
 
 Then, run `pod install`.
 
-### Carthage
+### Carthage - NOT YET AVAILABLE!
 
 To integrate Mack into your Xcode project using Carthage, add the following line to your `Cartfile`:
 
@@ -130,21 +131,19 @@ struct LoginView: View {
 }
 ```
 
-For more examples and usage instructions, please refer to the [full documentation](https://github.com/your_username_here/Mack/wiki).
+For more examples and usage instructions, please refer to the [full documentation](ocacreations.github.io/mack).
 
 ## Documentation
 
-Mack's comprehensive [documentation](https://github.com/your_username_here/Mack/wiki) covers everything you need to know, including component guides, styling instructions, and advanced topics.
+Mack's comprehensive [documentation](ocacreations.github.io/mack) covers everything you need to know, including component guides, styling instructions, and advanced topics.
 
 ## Contributing
 
-We welcome and appreciate all contributions to Mack. To contribute, please follow these steps:
-
-1. Fork this repository
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Open a Pull Request on GitHub
+Thank you for your interest in contributing to Mack! In order to get set up for development, follow these steps:
+1. Ensure you have the proper software for development: while some Mack features support older OS versions, to develop Mack, you must have macOS 13+ and Xcode 14+ installed. Mack is developed at OCA Creations LLC with Xcode 15 and macOS 13.4.
+2. Fork this repository
+3. Clone this repo on your local machine: `git clone https://github.com/YOUR_USERNAME/Mack.git && cd Mack`
+4. Open the Mack folder in Xcode. You can open it with Finder or: `open . -a Xcode`
 
 If you have any questions or suggestions, feel free to [open an issue](https://github.com/OCA-Creations/Mack/issues/new).
 
