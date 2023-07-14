@@ -97,25 +97,29 @@ As aformentioned, Mack's goal is to "import and forget". Functionality intregrat
 import Mack
 
 struct LoginView: View {
-  @SecurePersisted("email") private var email = ""
-  //Ensure this value is saved in secure storage, so it will not be blank next time
-  @SecurePersisted("password") private var password = ""
-
+  //Provided by Mack, the LoginViewController lets you simply store login stuff
+  //This uses the default config of username, and password
+  @ObservedObject var controller = LoginViewController(config: .default)
   var body: some View {
     VStack {
       Header("Welcome Back")
 
-      TextField("Email", text: $email)
+      TextField("Email", text: $controller.email)
         .placeholderColor(.blue)
 
-      SecureField("Password", text: $password)
+      SecureField("Password", text: $controller.password)
         .style(.passwordLight)
 
       Spacer()
 
-      Image("ClickMe")
+      Button("Log Me In") {
+        login()
+      }
       .onRightClick {
         print("You have right-clicked this item.")
+      }
+      .onChange(of: controller.isLoggedIn) { status in
+          print("The user \(status? "is" : "is not" ) logged in now.")
       }
       Text("This text will not allow screenshots.")
       .allowsScreenshots(false)
@@ -123,11 +127,22 @@ struct LoginView: View {
     .padding()
   }
 
-  func loginUser() -> Bool {
-    // A simple password comparison
-    let correctPassword = SecureStorage.getByID("correct_password")
-    let storedEmail = Secure
+  func login() {
+      //MARK: Example convenience functions, unnecessary
+      //Retrieve hash from Storage, provided by Mack
+      let passwordHash = Storage.get("password-hash")
+      // controller.login with default config requires either a hash function and a hash or two Equatables to compare
+      let hashOfUserPassword = Crypto.hash(controller.password, .sha256)
+
+
+      //MARK: All that is needed.
+      //We don't need either of those though.
+      //This is it. This function will hash the user password, retrieve the real one, and compare the two, and then change isLoggedIn as well as return a bool
+      let loggedIn = controller.loginWithHash(hash: .sha256, hashLocation: "password-hash")
+      print("The controller said the user is logged in: \(loggedIn).")
+      //... That's it!
   }
+  
 }
 ```
 
