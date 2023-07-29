@@ -3,7 +3,7 @@
 <!--[![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)](https://swift.org)!-->
 [![Swift](https://img.shields.io/badge/Swift-5.5-orange.svg)](https://swift.org)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
-[![Platform](https://img.shields.io/badge/platform-macOS%2010.15+%2B-blue)](https://developer.apple.com/macos)
+[![Platform](https://img.shields.io/badge/platform-macOS%2010.15%2B-blue)](https://developer.apple.com/macos)
 [![GitHub tag](https://img.shields.io/github/tag/OCA-Creations/Mack?include_prereleases=&sort=semver&color=blue)](https://github.com/OCA-Creations/Mack/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license)
 [![issues - Mack](https://img.shields.io/github/issues/OCA-Creations/Mack)](https://github.com/OCA-Creations/Mack/issues)
